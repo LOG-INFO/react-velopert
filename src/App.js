@@ -1,6 +1,7 @@
 import Counter from './Counter'
 import Hello from './Hello'
 import Wrapper from './Wrapper'
+import InputSample from './InputSample'
 
 const App = () => {
   const bye = "안녕히 계세요"
@@ -13,7 +14,13 @@ const App = () => {
 
   return (
     <>
+    <h2></h2>
+    <InputSample/>
+    <hr/>
+    <h2>useState</h2>
     <Counter/>
+    <hr/>
+    <h2>style, props</h2>
     <Wrapper>
       {/* isBold만 써주면 true로 간주 */}
       <Hello name="희찬" color="red" isBold/>
