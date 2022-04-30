@@ -20,17 +20,20 @@ const App = () => {
     {
       id: 1,
       username: 'velopert',
-      email: 'public.velopert@gmail.com'
+      email: 'public.velopert@gmail.com',
+      active: true,
     },
     {
       id: 2,
       username: 'tester',
-      email: 'tester@example.com'
+      email: 'tester@example.com',
+      active: false,
     },
     {
       id: 3,
       username: 'liz',
-      email: 'liz@example.com'
+      email: 'liz@example.com',
+      active: true,
     }
   ];
 
@@ -39,7 +42,8 @@ const App = () => {
   const nextId = useRef(4)
   const defaultUser = {
     username: "익명",
-    email: "-",
+    email: "@",
+    active: false
   }
   const [user, setUser] = useState(defaultUser)
   const onChange = ({ target }) => {
@@ -70,10 +74,16 @@ const App = () => {
     setUsers(users.filter(e => e.id !== userId))
   }
 
+  const onToggle = (userId) => {
+    setUsers(users.map(e => {
+      return e.id === userId ? { ...e, active: !e.active } : e
+    }))
+  }
+
   return (
     <>
       <h2>Array 렌더링</h2>
-      <UserList users={users} onDelete={onDelete} />
+      <UserList users={users} onDelete={onDelete} onToggle={onToggle} />
       <CreateUser user={user} onChange={onChange} onCreate={onCreate} />
       <hr />
       <h2>useRef</h2>
