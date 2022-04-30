@@ -1,4 +1,4 @@
-import React from 'react'
+import Counter from './Counter'
 import Hello from './Hello'
 import Wrapper from './Wrapper'
 
@@ -10,7 +10,10 @@ const App = () => {
     fontSize: 24,
     padding: '1rem'
   }
+
   return (
+    <>
+    <Counter/>
     <Wrapper>
       {/* isBold만 써주면 true로 간주 */}
       <Hello name="희찬" color="red" isBold/>
@@ -21,6 +24,7 @@ const App = () => {
       <Hello  color="green" isBold={true} />
       <div style={style}>{bye}</div>
     </Wrapper> 
+    </>
   )
 }
 
