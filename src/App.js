@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Hello from './Hello'
+import Wrapper from './Wrapper'
 
-function App() {
+const App = () => {
+  const bye = "안녕히 계세요"
+  const style = {
+    backgroundColor: 'black',
+    color: 'aqua',
+    fontSize: 24,
+    padding: '1rem'
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Wrapper>
+      {/* isBold만 써주면 true로 간주 */}
+      <Hello name="희찬" color="red" isBold/>
+      <Hello name="11" color="blue" isBold={true} />
+      <Hello name="22" color="green" />
+      <Hello />
+      <Hello name="33" isBold={true}  />
+      <Hello  color="green" isBold={true} />
+      <div style={style}>{bye}</div>
+    </Wrapper> 
+  )
 }
 
 export default App;
