@@ -2,6 +2,7 @@ import Counter from './Counter'
 import Hello from './Hello'
 import Wrapper from './Wrapper'
 import InputSample from './InputSample'
+import UserList from './UserList'
 
 const App = () => {
   const bye = "안녕히 계세요"
@@ -14,7 +15,10 @@ const App = () => {
 
   return (
     <>
-    <h2></h2>
+    <h2>Array 렌더링</h2>
+    <UserList />
+    <hr />
+    <h2>useRef</h2>
     <InputSample/>
     <hr/>
     <h2>useState</h2>
