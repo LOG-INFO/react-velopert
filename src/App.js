@@ -50,7 +50,7 @@ const App = () => {
     console.log(newUser)
     setUser(newUser)
   }
-  
+
   console.log(users)
 
   const onCreate = () => {
@@ -66,10 +66,14 @@ const App = () => {
     setUser(defaultUser)
   }
 
+  const onDelete = (userId) => {
+    setUsers(users.filter(e => e.id !== userId))
+  }
+
   return (
     <>
       <h2>Array 렌더링</h2>
-      <UserList users={users} />
+      <UserList users={users} onDelete={onDelete} />
       <CreateUser user={user} onChange={onChange} onCreate={onCreate} />
       <hr />
       <h2>useRef</h2>
