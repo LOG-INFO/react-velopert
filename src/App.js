@@ -83,8 +83,8 @@ const App = () => {
   return (
     <>
       <h2>Array 렌더링</h2>
-      <UserList users={users} onDelete={onDelete} onToggle={onToggle} />
       <CreateUser user={user} onChange={onChange} onCreate={onCreate} />
+      <UserList users={users} onDelete={onDelete} onToggle={onToggle} />
       <hr />
       <h2>useRef</h2>
       <InputSample />

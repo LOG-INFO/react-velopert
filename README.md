@@ -54,15 +54,46 @@ React를 사용하면 반응형 UI를 쉽게 만들 수 있다. 애플리케이�
 
 ## 특징
 
+### Pre-Rendering
+
+### 직관적인 페이지 기반 라우팅 시스팀
+
+프로젝트의 가장 바깥 폴더인 /pages 폴더에서 컴포넌트를 export하면 폴더명이 페이지 route가 됨
+
+### 페이지간 빠르고 매끄러운 전환을 위한 client-side navigation
+
+< Link /> 컴포넌트가 뷰포트에 보였을 때 관련 페이지를 백그라운드에서 미리 가져다 놓음
+
+### Code Splitting (코드 분할)
+
+웹의 첫 페이지가 로딩될 때, 거대한 javascript payload를 보내는 것이 아니라, **번들을 여러 조각으로 조각내어서 처음에 가장 필요한 부분만 전송**해 주는 방식을 통해 어플리케이션 로드 타임을 줄여준다
+
 ### Image Optimization
 
-### i18m Routing
+### Next.js Analytics
+
+실제 방문자 데이터 & 페이지별 인사이트 점수 분석
+
+### Zero Config
+
+컴파일, 번들링의 자동화. 최적화.
+
+### Hybrid: SSG and SSR
+
+> Pre-render pages at build time (SSG) or request time (SSR) in a single project.
+
+### SEO(Search Engine Optimization)를 위한 Server-Side Rendering(SSR)을 가능하게 함
+
+## 참고
+- https://velog.io/@syoung125/Next.js-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-1-Next.js-%EB%9E%80-Next.js%EB%A5%BC-%EC%99%9C-%EC%82%AC%EC%9A%A9%ED%95%A0%EA%B9%8C-Next.js%EC%9D%98-%EC%9E%A5%EC%A0%90%EC%9D%80
 
 # TypeScript
 
 [Document](https://www.typescriptlang.org/)
 
 > TypeScript is JavaScript with syntax for types
+
+JavaScript로 된 강타입 언어
 
 # Hooks
 
@@ -78,11 +109,16 @@ Hook은 Class Component에서만 쓸 수 있었던 `State`와 `Life Cycle` 기�
 
 ## 종류
 
-### useState
+### useState (동적 상태 관리)
 
-### useEffect
+### useEffect (side effect 수행 -mount/unmount/update)
 
-## 명령어
+### useContext (컴포넌트를 중첩하지 않고도 전역 값 쉽게 관리)
+
+# Recoil
+요즘 Redux 대신 사용하는 핫한 라이브러리라고 한다
+
+# 명령어
 ### 프로젝트 생성
 $ npx create-react-app .
 
@@ -122,3 +158,19 @@ serve -s build
 
 ## yarn
 요즘은 성능 등의 문제로 npm 대신 yarn을 쓰는 것 같다
+
+## 마운트/언마운트/업데이트
+
+### `useEffect`
+
+#### 마운트 시에 하는 작업 예시
+
+- props 로 받은 값을 컴포넌트의 로컬 상태로 설정
+- 외부 API 요청 (REST API 등)
+- 라이브러리 사용 (D3, Video.js 등...)
+- setInterval 을 통한 반복작업 혹은 setTimeout 을 통한 작업 예약
+
+#### 언마운트 시에 하는 작업 예시
+
+- setInterval, setTimeout 을 사용하여 등록한 작업들 clear 하기 (clearInterval, clearTimeout)
+- 라이브러리 인스턴스 제거
