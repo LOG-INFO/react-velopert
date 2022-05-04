@@ -115,20 +115,34 @@ Hook은 Class Component에서만 쓸 수 있었던 `State`와 `Life Cycle` 기�
 
 ### useContext (컴포넌트를 중첩하지 않고도 전역 값 쉽게 관리)
 
+### useMemo (성능 최적화를 위하여 연산된 값을 재사용)
+
 # Recoil
+
 요즘 Redux 대신 사용하는 핫한 라이브러리라고 한다
 
 # 명령어
+
 ### 프로젝트 생성
-$ npx create-react-app .
+
+```bash
+$ npx create-react-app ts-react-tutorial --template typescript
+```
 
 ### 실행
+
+```bash
 $ npm start
+```
 
 ### 빌드
+
+```
 $ npm run build
+```
 
 ### 빌드 결과물 실행
+
 serve -s build
 (serve: 웹서버, -s: 사용자가 어떤 경로로 들어오든 index.html을 반환)
 
@@ -140,23 +154,27 @@ serve -s build
   - inline-block: 한 줄 전부 차지하지 않고, 크기 지정 가능
   - none: 보여지지 않음. 공간을 차지하지 않음
 
-
 ## 상태 관리 도구(State Management Tools)
+
 ### props drilling 문제
+
 - 컴포넌트 A -> B -> C -> D가 있을 때 A에서 관리하는 상태를 D가 써야한다면 B, C, D를 거쳐 받아야한다.
 
 ### 자식 Component간 메시지 전달이 불가능하다
 
 ### 해결
+
 - 전역 상태 저장소를 제공한다
   - redux
   - recoil
   - context-api
 
 ## npm trends
+
 - NPM 모듈들의 트렌드릴 관리해준다
 
 ## yarn
+
 요즘은 성능 등의 문제로 npm 대신 yarn을 쓰는 것 같다
 
 ## 마운트/언마운트/업데이트
