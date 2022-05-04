@@ -4,10 +4,10 @@ import Wrapper from './Wrapper'
 import InputSample from './InputSample'
 import UserList from './UserList'
 import CreateUser from './CreateUser'
-import { useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 
 function countActiveUsers(users) {
-  console.log('활설 사용자 수를 세는 중...')
+  console.log('활성 사용자 수를 세는 중...')
   return users.filter(user => user.active).length
 }
 
@@ -50,39 +50,41 @@ const App = () => {
     active: false
   }
   const [user, setUser] = useState(defaultUser)
-  const onChange = ({ target }) => {
+  const { username, email } = user;
+
+  const onChange = useCallback( ({ target }) => {
     const newUser = {
       ...user,
       [target.name]: target.value
     }
     console.log(newUser)
     setUser(newUser)
-  }
+  },[user])
 
   console.log(users)
 
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     const newUser = {
       id: nextId.current++,
-      username: user.username,
-      email: user.email
+      username: username,
+      email: email
     }
     console.log(newUser)
     // setUsers([...users, newUser])
     setUsers(users.concat(newUser))
 
     setUser(defaultUser)
-  }
+  }, [users, username, email])
 
-  const onDelete = (userId) => {
+  const onDelete = useCallback ((userId) => {
     setUsers(users.filter(e => e.id !== userId))
-  }
+  }, [users]);
 
-  const onToggle = (userId) => {
+  const onToggle = useCallback ((userId) => {
     setUsers(users.map(e => {
       return e.id === userId ? { ...e, active: !e.active } : e
     }))
-  }
+  }, [users]);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
   return (
