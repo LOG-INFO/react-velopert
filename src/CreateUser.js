@@ -12,4 +12,4 @@ const CreateUser = ({ user, onChange, onCreate }) => {
     )
 }
 
-export default CreateUser
+export default React.memo(CreateUser)

@@ -53,13 +53,15 @@ const App = () => {
   const { username, email } = user;
 
   const onChange = useCallback( ({ target }) => {
-    const newUser = {
-      ...user,
-      [target.name]: target.value
-    }
-    console.log(newUser)
-    setUser(newUser)
-  },[user])
+    setUser(user => {
+      const newUser = {
+        ...user,
+        [target.name]: target.value
+      }
+      console.log(newUser)
+      return newUser
+    })
+  },[])
 
   console.log(users)
 
@@ -71,20 +73,20 @@ const App = () => {
     }
     console.log(newUser)
     // setUsers([...users, newUser])
-    setUsers(users.concat(newUser))
+    setUsers(users => users.concat(newUser))
 
     setUser(defaultUser)
-  }, [users, username, email])
+  }, [username, email])
 
   const onDelete = useCallback ((userId) => {
-    setUsers(users.filter(e => e.id !== userId))
-  }, [users]);
+    setUsers(users => users.filter(e => e.id !== userId))
+  }, []);
 
   const onToggle = useCallback ((userId) => {
-    setUsers(users.map(e => {
+    setUsers(users => users.map(e => {
       return e.id === userId ? { ...e, active: !e.active } : e
     }))
-  }, [users]);
+  }, []);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
   return (

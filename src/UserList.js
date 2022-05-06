@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 // https://react.vlpt.us/basic/11-render-array.html
 
-const UserElement = ({ user, onDelete, onToggle }) => {
+const UserElement = React.memo(({ user, onDelete, onToggle }) => {
     const { id, username, email, active } = user
 
     useEffect(
@@ -24,7 +24,7 @@ const UserElement = ({ user, onDelete, onToggle }) => {
             <button onClick={() => onDelete(id)}>삭제</button>
         </div>
     )
-}
+})
 
 const UserList = ({ users, onDelete, onToggle }) => {
     return (
@@ -39,4 +39,4 @@ UserList.defaultProps = {
     users: []
 }
 
-export default UserList;
+export default React.memo(UserList);
