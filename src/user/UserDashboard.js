@@ -62,46 +62,18 @@ const defaultUsers = [
 function UserDashboard() {
   const [state, dispatch] = useReducer(reduce, { users: defaultUsers })
   const { users } = state
-  const nextId = useRef(4)
+
   const count = useMemo(() => countActiveUsers(users), [users])
 
-  const [inputs, onChange, reset] = useInputs({
-    username: 'test',
-    email: 'test@test.test',
-  })
-  const resetInput = reset
-  console.log(
-    'inputs: ' + JSON.stringify(useInputs({ username: '', email: '' })),
-  )
-  const inputUserName = inputs.username
-  const inputEmail = inputs.email
-
-  const onCreate = useCallback(() => {
-    const newUser = {
-      id: nextId.current++,
-      username: inputUserName,
-      email: inputEmail,
-      active: false,
-    }
-    dispatch({ type: 'CREATE_USER', newUser: newUser, resetInput: resetInput })
-  }, [inputUserName, inputEmail, resetInput])
-
-  const onDelete = useCallback((userId) => {
-    dispatch({ type: 'DELETE_USER', deletedUserId: userId })
-  }, [])
-
-  const onToggle = useCallback((userId) => {
-    dispatch({ type: 'TOGGLE_USER', toggledUserId: userId })
-  }, [])
-
   return (
-    <>
+    <UserDispatch.Provider value={dispatch}>
       <h2>Array 렌더링</h2>
-      <CreateUser user={inputs} onChange={onChange} onCreate={onCreate} />
-      <UserList users={users} onDelete={onDelete} onToggle={onToggle} />
+      <CreateUser />
+      <UserList users={users} />
       <div>활성 사용자 수: {count}</div>
-    </>
+    </UserDispatch.Provider>
   )
 }
 
+export const UserDispatch = React.createContext(null)
 export default React.memo(UserDashboard)
