@@ -111,6 +111,8 @@ Hook은 Class Component에서만 쓸 수 있었던 `State`와 `Life Cycle` 기�
 
 ### useState (동적 상태 관리)
 
+### useRef (동적 상태 관리)
+
 ### useEffect (side effect 수행 -mount/unmount/update)
 
 ### useContext (컴포넌트를 중첩하지 않고도 전역 값 쉽게 관리)
@@ -123,6 +125,10 @@ Hook은 Class Component에서만 쓸 수 있었던 `State`와 `Life Cycle` 기�
 > 그 이유는, 우리가 나중에 컴포넌트에서 props 가 바뀌지 않았으면 Virtual DOM 에 새로 렌더링하는 것 조차 하지 않고 컴포넌트의 결과물을 재사용 하는 최적화 작업을 할건데요, 이 작업을 하려면, 함수를 재사용하는것이 필수입니다.
 
 > useMemo 를 기반으로 만들어졌음 (다만, 함수를 위해서 사용 할 때 더욱 편하게 해준 것 뿐)
+
+### useReducer (컴포넌트의 상태 업데이트 로직을 컴포넌트에서 분리시켜줌)
+
+> 상태 업데이트 로직을 컴포넌트 바깥에 작성 할 수도 있고, 심지어 다른 파일에 작성 후 불러와서 사용 할 수도 있음
 
 # Recoil
 

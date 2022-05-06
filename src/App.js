@@ -2,107 +2,15 @@ import Counter from './Counter'
 import Hello from './Hello'
 import Wrapper from './Wrapper'
 import InputSample from './InputSample'
-import UserList from './UserList'
-import CreateUser from './CreateUser'
-import { useCallback, useMemo, useRef, useState } from 'react'
-
-function countActiveUsers(users) {
-  console.log('활성 사용자 수를 세는 중...')
-  return users.filter(user => user.active).length
-}
+import UserDashboard from './user/UserDashboard'
 
 const App = () => {
-  const bye = "안녕히 계세요"
-  const style = {
-    backgroundColor: 'black',
-    color: 'aqua',
-    fontSize: 24,
-    padding: '1rem'
-  }
 
-  const defaultUsers = [
-    {
-      id: 1,
-      username: 'velopert',
-      email: 'public.velopert@gmail.com',
-      active: true,
-    },
-    {
-      id: 2,
-      username: 'tester',
-      email: 'tester@example.com',
-      active: false,
-    },
-    {
-      id: 3,
-      username: 'liz',
-      email: 'liz@example.com',
-      active: true,
-    }
-  ];
-
-  const [users, setUsers] = useState(defaultUsers)
-
-  const nextId = useRef(4)
-  const defaultUser = {
-    username: "익명",
-    email: "@",
-    active: false
-  }
-  const [user, setUser] = useState(defaultUser)
-  const { username, email } = user;
-
-  const onChange = useCallback( ({ target }) => {
-    setUser(user => {
-      const newUser = {
-        ...user,
-        [target.name]: target.value
-      }
-      console.log(newUser)
-      return newUser
-    })
-  },[])
-
-  console.log(users)
-
-  const onCreate = useCallback(() => {
-    const newUser = {
-      id: nextId.current++,
-      username: username,
-      email: email
-    }
-    console.log(newUser)
-    // setUsers([...users, newUser])
-    setUsers(users => users.concat(newUser))
-
-    setUser(defaultUser)
-  }, [username, email])
-
-  const onDelete = useCallback ((userId) => {
-    setUsers(users => users.filter(e => e.id !== userId))
-  }, []);
-
-  const onToggle = useCallback ((userId) => {
-    setUsers(users => users.map(e => {
-      return e.id === userId ? { ...e, active: !e.active } : e
-    }))
-  }, []);
-
-  const count = useMemo(() => countActiveUsers(users), [users]);
   return (
     <>
-      <h2>Array 렌더링</h2>
-      <CreateUser user={user} onChange={onChange} onCreate={onCreate} />
-      <UserList users={users} onDelete={onDelete} onToggle={onToggle} />
-      <div>활성 사용자 수: {count}</div>
-      <hr />
-      <h2>useRef</h2>
+      <UserDashboard />
       <InputSample />
-      <hr />
-      <h2>useState</h2>
       <Counter />
-      <hr />
-      <h2>style, props</h2>
       <Wrapper>
         {/* isBold만 써주면 true로 간주 */}
         <Hello name="희찬" color="red" isBold />
@@ -116,6 +24,14 @@ const App = () => {
 
     </>
   )
+}
+
+const bye = "안녕히 계세요"
+const style = {
+  backgroundColor: 'black',
+  color: 'aqua',
+  fontSize: 24,
+  padding: '1rem'
 }
 
 export default App;

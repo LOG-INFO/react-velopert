@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 
 const UserElement = React.memo(({ user, onDelete, onToggle }) => {
     const { id, username, email, active } = user
+    console.log('ID: ' + id)
 
     useEffect(
         ()=> {
