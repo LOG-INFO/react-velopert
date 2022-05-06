@@ -1,5 +1,4 @@
-import React, { useCallback, useMemo, useReducer, useRef } from 'react'
-import useInputs from '../hooks/useInputs'
+import React, { useMemo, useReducer } from 'react'
 import CreateUser from './CreateUser'
 import UserList from './UserList'
 
