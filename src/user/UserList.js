@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import Button from '../components/Button'
 import { UserDispatch } from './UserDashboard'
 
 // https://react.vlpt.us/basic/11-render-array.html
@@ -20,18 +21,22 @@ const UserElement = React.memo(({ user }) => {
 
   return (
     <div>
-      <b
-        style={{ cursor: 'pointer', color: active ? 'green' : 'red' }}
-        onClick={() => dispatch({ type: 'TOGGLE_USER', toggledUserId: id })}
-      >
-        {username}
-      </b>
-      <span>({email})</span>
-      <button
+      <div style={{ display: 'inline-block', width: 350 + 'px' }}>
+        <b
+          style={{ cursor: 'pointer', color: active ? 'green' : 'red' }}
+          onClick={() => dispatch({ type: 'TOGGLE_USER', toggledUserId: id })}
+        >
+          {username}
+        </b>
+        <span>({email})</span>
+      </div>
+      <Button
+        size="small"
+        color="pink"
         onClick={() => dispatch({ type: 'DELETE_USER', deletedUserId: id })}
       >
         삭제
-      </button>
+      </Button>
     </div>
   )
 })

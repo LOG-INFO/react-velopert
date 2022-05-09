@@ -3,9 +3,9 @@ import Hello from './Hello'
 import Wrapper from './Wrapper'
 import InputSample from './InputSample'
 import UserDashboard from './user/UserDashboard'
+import Button from './components/Button'
 
 const App = () => {
-
   return (
     <>
       <UserDashboard />
@@ -21,17 +21,21 @@ const App = () => {
         <Hello color="green" isBold={true} />
         <div style={style}>{bye}</div>
       </Wrapper>
-
+      <div className="buttons">
+        <Button size="large">Button1</Button>
+        <Button size="medium">Button2</Button>
+        <Button size="small">Button3</Button>
+      </div>
     </>
   )
 }
 
-const bye = "안녕히 계세요"
+const bye = '안녕히 계세요'
 const style = {
   backgroundColor: 'black',
   color: 'aqua',
   fontSize: 24,
-  padding: '1rem'
+  padding: '1rem',
 }
 
-export default App;
+export default App
